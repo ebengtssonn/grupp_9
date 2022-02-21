@@ -17,8 +17,12 @@ def antalVaror(listan): #Definierar funktionen
 #Funktion för menyval 3
 def skrivUtVara(listan): #Definierar funktionen 
     #Variabel som tilldelas en input (int) från användaren för att läsa specifik punkt på listan efter indexvärde.
-    namn = input('Vilken vara i shoppinglistan vill du ha info om?')
-    print(listan[namn]) #utskrift
+    vilkenVara = input('Vilken vara i shoppinglistan vill du ha info om?')
+    for i in listan:
+        if vilkenVara == i.getNamn():
+            print(i)
+            break
+    
 
 #Funktion för menyval 4
 def taBortIndex(listan): #Definierar funktionen

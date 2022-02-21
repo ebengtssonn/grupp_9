@@ -10,8 +10,6 @@ def main(): #Definierar funktionen main()
 
     shoppinglista = [vara1, vara2, vara3] #variabeln shoppinglista innehåller listan med objekten(varorna).
 
-    vilkenVara = input('Vilken vara vill du läsa om?')
-    print(shopping.utskrift)
 
     while again: #while loop för att kunna köra programmet så länge som True gäller.
         print('\n''Välkommen till menyn för shoppinglistan! Välj ett alternativ ur menyn:') #startfras.
@@ -24,7 +22,7 @@ def main(): #Definierar funktionen main()
             shoppinglista_funktioner.adderaVara(shoppinglista)
         if menyVal == 2: #Anropar funktionen för att skriva ut varor på listan.
             shoppinglista_funktioner.antalVaror(shoppinglista)
-        if menyVal == 3: #Anropar funktionen för att ta bort en vara på listan.
+        if menyVal == 3: #Anropar funktionen för att söka namn och skriva ut info om ett visst objekt på listan.
             shoppinglista_funktioner.skrivUtVara(shoppinglista)
         if menyVal == 4: #Anropar funktionen för att ta bort en vara baserat på indexposition.
             shoppinglista_funktioner.taBortIndex(shoppinglista)
