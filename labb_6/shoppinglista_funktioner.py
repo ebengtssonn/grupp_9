@@ -23,22 +23,46 @@ def skrivUtVara(listan): #Definierar funktionen
             print(i)
             break
     
-
 #Funktion för menyval 4
-def taBortIndex(listan): #Definierar funktionen
+def skrivUtNamn(listan): #Definierar funktionen
+    for i in listan:
+        print(i.getNamn())
+
     #Variabel som tilldelas funktionen pop med en input för att kunna radera en punkt efter indexvärde. 
-    index = listan.pop(int(input('Vilken punkt i shoppinglistan vill du ta bort?'))) 
-    print(f'Du tog bort {index} från shoppinglistan.') #utskrift
+    # index = listan.pop(int(input('Vilken punkt i shoppinglistan vill du ta bort?'))) 
+    # print(f'Du tog bort {index} från shoppinglistan.') #utskrift
 
 #Funktion för menyval 5
-def utskriftVaror(listan): #Definierar funktionen
-    print('Varor i shoppinglistan:') #utskrift
-    for vara in listan: #for loop för att skriva ut varorna på ett snyggare sätt.
-        print(f'{vara},',  end = ' ')
-    print('')#Vi ville ha en blankrad
+def skrivUtAlla(listan): #Definierar funktionen
+    for i in listan:
+        print(i)
+        print()# blankrad mellan varor
+
+
 
 #Funktion för menyval 6
-def taBortVara(listan): #Definierar funktionen
-    vara = input('Vilken vara vill du ta bort?') #Variabel för att ta emot vilken vara som ska tas bort.
-    listan.remove(vara) #funktionen som tar bort den valda varan från listan. 
-    print(f'Du tog bort {vara} från shoppinglistan.') #utskrift
+def uppdateraVara(listan): #Definierar funktionen
+    vara = input('Vilken vara vill du uppdatera?') #Variabel för att ta emot vilken vara som ska tas bort.
+    nyttAntal = input('Ange nytt antal: ')
+    nyttPris = input('Ange nytt pris: ')
+    for i in listan:
+        if vara == i.getNamn():
+           i.setAntal(nyttAntal)
+           i.setPris(nyttPris)
+           print('-------------------------')
+           print(f'Det nya antalet är: {i.getAntal()} \nDet nya priset är: {i.getPris()} ')
+
+
+#Funktion för menyval 7.1
+def taBortIndex(listan):
+        index = int(input('Vilken indexposition i listan vill du ta bort?'))
+        del listan[index]
+        print(f'Du tog bort punkt nr.{index} från listan')
+
+#Funktion för menyval 7.2
+def taBortNamn(listan):
+        vara = input('Vilken vara vill du ta bort från listan?')
+        for i in listan:
+            if vara == i.getNamn():
+                listan.remove(i)
+                print(f'Du tog bort {vara} från shoppinglistan.')

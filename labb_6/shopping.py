@@ -23,7 +23,7 @@ class Shopping:
         return self.__pris
 
     def __str__(self):
-        utskrift = 'Namn på vara:' +self.getNamn()+  \
-             '\nAntal:' +str(self.getAntal())+  \
-                 ' \nPris:' +str(self.getPris())
+        utskrift = 'Namn på vara: ' +self.getNamn()+  \
+             '\nAntal: ' +str(self.getAntal())+  \
+                 ' \nPris: ' +str(self.getPris())
         return utskrift
