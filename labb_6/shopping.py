@@ -26,7 +26,7 @@ class Shopping: # Skapar klassen shopping.
         return self.__pris
 
     def __str__(self):#Definerar str metod för utskrift.
-        utskrift = 'Namn på vara: ' +self.getNamn()+  \
+        utskrift ='Namn på vara: ' +self.getNamn()+  \
              '\nAntal: ' +str(self.getAntal())+  \
                  ' \nPris: ' +str(self.getPris())#Typar om antal och pris till sträng.
         return utskrift
