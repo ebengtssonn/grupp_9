@@ -5,7 +5,8 @@ class Shopping: # Skapar klassen shopping.
         self.__namn = namn
         self.__antal = antal
         self.__pris = pris
-#Definerar set- och getmetoder. 
+        
+    #Definerar set- och getmetoder. 
     def setNamn(self, namn):
         self.__namn = namn
     

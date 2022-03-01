@@ -12,7 +12,7 @@ def adderaVara(listan): #Definierar funktionen.
 
 #Funktion för menyval 2
 def antalVaror(listan): #Definierar funktionen.
-    antalVaror = len(listan) #Anropar funktionen len som returnerar värdet.
+    antalVaror = len(listan) #Anropar funktionen len som returnerar antal objekt i listan.
     print(f'Antal varor i shoppinglistan: {antalVaror}') #Utskrift.
 
 #Funktion för menyval 3
@@ -28,7 +28,7 @@ def skrivUtVara(listan): #Definierar funktionen.
     
 #Funktion för menyval 4
 def skrivUtNamn(listan): #Definierar funktionen.
-    #Forloop för att skriva ut vilka varor som finns på listan.
+    #Forloop för att skriva ut namnet på alla varor som finns på listan.
     for i in listan:
         print(i.getNamn())
 
@@ -39,14 +39,12 @@ def skrivUtAlla(listan): #Definierar funktionen.
         print(i)
         print()# Blankrad mellan varor.
 
-
-
 #Funktion för menyval 6
 def uppdateraVara(listan): #Definierar funktionen.
-    vara = input('Vilken vara vill du uppdatera?') #Variabel för att völja vilken vara som ska uppdateras.
+    vara = input('Vilken vara vill du uppdatera?') #Variabel för att välja vilken vara som ska uppdateras.
     #Variabler för ny info. Användaren anger antal och pris.
-    nyttAntal = input('Ange nytt antal: ')
-    nyttPris = input('Ange nytt pris: ')
+    nyttAntal = int(input('Ange nytt antal: '))
+    nyttPris = int(input('Ange nytt pris: '))
     #Forloop för att gå igenom listan.
     for i in listan:
         #Om namnet finns med på listan uppdateras antal och pris för den varan.
@@ -56,7 +54,6 @@ def uppdateraVara(listan): #Definierar funktionen.
            print('-------------------------')
            print(f'Det nya antalet är: {i.getAntal()} \nDet nya priset är: {i.getPris()} ')
 
-
 #Funktion för menyval 7.1
 #Definerar funktion för att ta bort vald indexposition.
 def taBortIndex(listan):
@@ -65,7 +62,6 @@ def taBortIndex(listan):
         print(f'Du tog bort punkt nr.{index} från listan')
 
 #Funktion för menyval 7.2
-
 def taBortNamn(listan):
         vara = input('Vilken vara vill du ta bort från listan?')#Variabel för att ta emot input från användaren.
         #Forloop för att hitta rätt namn i listan.

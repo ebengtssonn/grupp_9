@@ -1,18 +1,18 @@
 import shoppinglista_funktioner #Importerar filen "shoppinglista_funktioner" med alla funktioner. 
-import shopping#Importerar klassfilen.
+import shopping #Importerar klassfilen.
 
 def main(): #Definierar funktionen main().
-    again = True #Tilldelar again värdet true för att kunna köra loopen.
-#Variabler som tilldelas värden för varje vara (namn, antal, pris).
+    igen = True #Tilldelar igen värdet true för att kunna köra loopen.
+    #Variabler som tilldelas värden för varje vara (namn, antal, pris).
     vara1 = shopping.Shopping('mjölk',5,15)
     vara2 = shopping.Shopping('ägg',12,10)
     vara3 = shopping.Shopping('bröd',20,20)
 
     shoppinglista = [vara1, vara2, vara3] #Variabeln shoppinglista innehåller listan med objekten(varorna).
 
-    while again: #While loop för att kunna köra programmet så länge som again är True.
+    while igen: #While loop för att kunna köra programmet så länge som igen är True.
         print('\n''Välkommen till menyn för shoppinglistan! Välj ett alternativ ur menyn:') #Startfras.
-        #Variabel för att kunna ta emot ett manyval av användaren i form av en integer. 
+        #Variabel för att kunna ta emot ett menyval av användaren i form av en integer. 
         menyVal = int(input( '1 - Lägg till vara,' '\n' '2 - Skriv ut antal varor på listan,' '\n' '3 - Info om en vara på listan,' 
         '\n' '4 - Skriv ut varor som finns på listan,' '\n' '5 - Info om alla varor på listan,' 
         '\n' '6 - Uppdatera antal och pris för vald vara,' '\n' '7 - Ta bort vara på listan,' '\n' '8 - Avsluta shoppinglistan.' '\n''Vilket alternativ väljer du?'))
@@ -39,6 +39,6 @@ def main(): #Definierar funktionen main().
                 shoppinglista_funktioner.taBortNamn(shoppinglista)
         if menyVal == 8: #Avslutar programmet shoppinglistan.
             print('Nu avslutas shoppinglistan!') #Avslutande utskrift.
-            again = False #Again tilldelas false för att avsluta loopen. 
+            igen = False #igen tilldelas false för att avsluta loopen. 
 
 main() #anropar för att köra funktionen main()
