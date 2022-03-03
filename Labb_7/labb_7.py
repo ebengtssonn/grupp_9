@@ -49,6 +49,10 @@ def helaListan_func():
         t_area.insert (END,f' {v} \n')
         t_area.insert (END,'---------------\n')
 
+#funktion 6 
+def uppdatera_func():
+    t_area.delete('1.0', END) #rensar innan
+
 root = Tk()#instans av klassen
 root.title('Shopping')
 
