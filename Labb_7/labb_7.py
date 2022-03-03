@@ -29,73 +29,72 @@ def antal_func():#funktion för antal varor
     t_area.insert(END, len(shopping_dict))#skriver ut antal varor i dict med hjälp av len
 
 #Funktion 3
-def info_func(): #funktion för 
+def info_func(): #funktion för att hämta info om vald vara
     t_area.delete('1.0', END) #rensar innan 
-    sokt_vara = e_namn.get()
-    for v in shopping_dict.values():
-        if sokt_vara.lower() in v.getNamn().lower():
-            t_area.insert(END, v)
+    sokt_vara = e_namn.get() #variabel för att ta emot det sökta namnet
+    for v in shopping_dict.values(): #Loop för att hitta objektet med rätt namn/ värde
+        if sokt_vara.lower() in v.getNamn().lower(): #kan läsa av både versaler och gemener
+            t_area.insert(END, v)# skriver ut
 
 #Funktion 4
-def namn_func():
+def namn_func(): #funktion för att skriva ut alla namn
     t_area.delete('1.0', END) #rensar innan 
-    for v in shopping_dict.values():
-        t_area.insert (END,f'{v.getNamn()} \n')
+    for v in shopping_dict.values(): #loopar igenom dict
+        t_area.insert (END,f'{v.getNamn()} \n')#skriver ut namnet för varje varv
 
 #Funktion 5
-def helaListan_func():
+def helaListan_func():# funktion för att skriva ut all info om alla varor i listan
     t_area.delete('1.0', END) #rensar innan 
-    for v in shopping_dict.values():
-        t_area.insert (END,f' {v} \n')
+    for v in shopping_dict.values(): #loopar igenom dict
+        t_area.insert (END,f' {v} \n') #skriver ut infon om varje vara
         t_area.insert (END,'---------------\n')
 
 #funktion 6 
-def uppdatera_func():
+def uppdatera_func(): #funktion för att uppdatera pris och antal
     t_area.delete('1.0', END) #rensar innan
-    nytt_pris = int(e_pris.get())
-    nytt_antal = int(e_antal.get())
-    vara = e_namn.get()
-    for i in shopping_dict.values():
-        if vara == e_namn.get():
-            i.setAntal(nytt_antal)
-            i.setPris(nytt_pris)
-            break
-    t_area.insert (END,'Nu är varan uppdaterad: \n')
-    t_area.insert (END, i)
+    nytt_pris = int(e_pris.get()) #variabel för att kunna ta emot nytt pris
+    nytt_antal = int(e_antal.get()) #variabel för att kunna ta emot nytt antal
+    vara = e_namn.get() #varabel för att ta emot vilken vara som ska ändras
+    for i in shopping_dict.values(): #For-loop för att gå igenom dict och hitta rätt item
+        if vara == i.getNamn(): #kollar så namnet i dict stämmer med det inmatade
+            i.setAntal(nytt_antal) #sätter nytt antal
+            i.setPris(nytt_pris) #sätter nytt pris
+            break #stoppar loopen
+    t_area.insert (END,'Nu är varan uppdaterad: \n') #utskrift
+    t_area.insert (END, i)#utskrift av uppdaterad vara
 
 #funktion 7
-def ta_bort_func():
+def ta_bort_func(): #funktion för att ta bort valt id
     t_area.delete('1.0', END) #rensar innan 
-    id = int(e_id.get())
-    del shopping_dict[id]
-    t_area.insert (END, f'Du tog bort nr: {id}')
+    id = int(e_id.get()) #variabel för att ta emot valt id. Typar om till int
+    del shopping_dict[id] #använder funktionen del för att ta bort valt id från dictionaryn. 
+    t_area.insert (END, f'Du tog bort nr: {id}') #skriver ut vilket id som togs bort.
    
-
-root = Tk()#instans av klassen
+#GUI
+root = Tk()
 root.title('Shopping')
 
-lbl_namn = Label(root, text = 'Fyll i namn på vara:')#namn lbl, klass Label , Text ='' detsamma som print
-lbl_namn.grid(row = 0, column = 0)
-lbl_antal = Label(root, text = 'Fyll i antal:')#namn lbl, klass Label , Text ='' detsamma som print
+
+lbl_namn = Label(root, text = 'Fyll i namn på vara:') #deklarerar textlabel
+lbl_namn.grid(row = 0, column = 0) #placerar ut/ lägger in textlabel på gui
+lbl_antal = Label(root, text = 'Fyll i antal:')
 lbl_antal.grid(row = 1, column = 0)
-lbl_pris = Label(root, text = 'Fyll i pris:')#namn lbl, klass Label , Text ='' detsamma som print
+lbl_pris = Label(root, text = 'Fyll i pris:')
 lbl_pris.grid(row = 2, column = 0)
 lbl_id = Label(root, text = 'Ange ID för att ta bort vara:')
 lbl_id.grid(row = 3, column = 0)
 
-e_namn = Entry(root, width=40, borderwidth=5)#klassen entry har skapats med objektet e_namn
-e_namn.grid(row=0, column=1)
-e_antal = Entry(root, width=40, borderwidth=5)#klassen entry har skapats med objektet e_namn
+e_namn = Entry(root, width=40, borderwidth=5)#deklarerar/ skapar inputfält. Sätter bredd och ram.
+e_namn.grid(row=0, column=1) #placerar ut inputfält i gui
+e_antal = Entry(root, width=40, borderwidth=5)
 e_antal.grid(row=1, column=1)
-e_pris = Entry(root, width=40, borderwidth=5)#klassen entry har skapats med objektet e_namn
+e_pris = Entry(root, width=40, borderwidth=5)
 e_pris.grid(row=2, column=1)
-e_id = Entry(root, width=40, borderwidth=5)#klassen entry har skapats med objektet e_namn
+e_id = Entry(root, width=40, borderwidth=5)
 e_id.grid(row=3, column=1)
 
-
-
-btn_addera = Button(root, text='Lägg till', padx=30, pady=20, command=addera_func)
-btn_addera.grid(row=4, column=0, columnspan=1)
+btn_addera = Button(root, text='Lägg till', padx=30, pady=20, command=addera_func) #deklarerar/ skapar upp knapp. Sätter padding och funktion som ska köras
+btn_addera.grid(row=4, column=0, columnspan=1) #placerar ut knappen i gui. 
 btn_antal = Button(root, text='Antal varor', padx=30, pady=20, command=antal_func)
 btn_antal.grid(row=4, column=1, columnspan=1)
 btn_sok = Button(root, text='Visa info (sök på namn)', padx=30, pady=20, command=info_func)
@@ -109,8 +108,10 @@ btn_uppdatera.grid(row=5, column=2, columnspan=1)
 btn_ta_bort = Button(root, text='Ta bort  (ange ID)', padx=30, pady=20, command=ta_bort_func)
 btn_ta_bort.grid(row=5, column=3, columnspan=1)
 
-t_area = Text(root, height=100, width=60)
-t_area.grid(row=6, column=0, columnspan=3)
+t_area = Text(root, height=100, width=100) #deklarerar/ skapar upp text area och bestämmer storlek. 
+t_area.grid(row=6, column=0, columnspan=3) #placerar ut text area i gui. 
+t_area.insert (END,'Välkommen till programmet för administartion av shoppinglistan!')
+
 
 
 
