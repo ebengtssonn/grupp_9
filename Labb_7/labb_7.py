@@ -1,10 +1,10 @@
 from tkinter import * #importerar tkinter
-import shopping # importerar klassenfilen shopping
+import class_shopping # importerar klassenfilen shopping
  
 #variabler med varor som finns med shoppinglistan från början
-vara1 = shopping.Shopping('mjölk',5,15)
-vara2 = shopping.Shopping('ägg',12,10)
-vara3 = shopping.Shopping('bröd',20,20)
+vara1 = class_shopping.Shopping('mjölk',5,15)
+vara2 = class_shopping.Shopping('ägg',12,10)
+vara3 = class_shopping.Shopping('bröd',20,20)
 
 shopping_dict = {1 : vara1, 2 : vara2, 3 : vara3} #Variabeln shoppinglista innehåller dict med objekten(varorna).
 
@@ -18,7 +18,7 @@ def addera_func():#add funktion
     namn = e_namn.get() #variabel för att kunna ta emot angivet namn
     antal = int(e_antal.get()) # variabel för att kunna ta emot angivet antal, typar om till int
     pris = int(e_pris.get()) #variabel för att kunna ta emot pris, typar om till int
-    vara = shopping.Shopping(namn, antal, pris) # varaibel för att hämta objektet vara från klassfilen
+    vara = class_shopping.Shopping(namn, antal, pris) # varaibel för att hämta objektet vara från klassfilen
     shopping_dict[id] = vara # varan tilldelas sitt id i dict
     t_area.insert(END,'Du har lagt till varan: \n') #skriver ut
     t_area.insert(END, shopping_dict[id])#skriver ut 
@@ -33,17 +33,17 @@ def info_func(): #funktion för att hämta info om vald vara
     t_area.delete('1.0', END) #rensar innan 
     sokt_vara = e_namn.get() #variabel för att ta emot det sökta namnet
     for v in shopping_dict.values(): #Loop för att hitta objektet med rätt namn/ värde
-        if sokt_vara.lower() in v.getNamn().lower(): #kan läsa av både versaler och gemener
+        if sokt_vara.lower() in v.get_namn().lower(): #kan läsa av både versaler och gemener
             t_area.insert(END, v)# skriver ut
 
 #Funktion 4
 def namn_func(): #funktion för att skriva ut alla namn
     t_area.delete('1.0', END) #rensar innan 
     for v in shopping_dict.values(): #loopar igenom dict
-        t_area.insert (END,f'{v.getNamn()} \n')#skriver ut namnet för varje varv
+        t_area.insert (END,f'{v.get_namn()} \n')#skriver ut namnet för varje varv
 
 #Funktion 5
-def helaListan_func():# funktion för att skriva ut all info om alla varor i listan
+def hela_listan_func():# funktion för att skriva ut all info om alla varor i listan
     t_area.delete('1.0', END) #rensar innan 
     for v in shopping_dict.values(): #loopar igenom dict
         t_area.insert (END,f' {v} \n') #skriver ut infon om varje vara
@@ -56,9 +56,9 @@ def uppdatera_func(): #funktion för att uppdatera pris och antal
     nytt_antal = int(e_antal.get()) #variabel för att kunna ta emot nytt antal
     vara = e_namn.get() #varabel för att ta emot vilken vara som ska ändras
     for i in shopping_dict.values(): #For-loop för att gå igenom dict och hitta rätt item
-        if vara == i.getNamn(): #kollar så namnet i dict stämmer med det inmatade
-            i.setAntal(nytt_antal) #sätter nytt antal
-            i.setPris(nytt_pris) #sätter nytt pris
+        if vara == i.get_namn(): #kollar så namnet i dict stämmer med det inmatade
+            i.set_antal(nytt_antal) #sätter nytt antal
+            i.set_pris(nytt_pris) #sätter nytt pris
             break #stoppar loopen
     t_area.insert (END,'Nu är varan uppdaterad: \n') #utskrift
     t_area.insert (END, i)#utskrift av uppdaterad vara
@@ -101,8 +101,8 @@ btn_sok = Button(root, text='Visa info (sök på namn)', padx=30, pady=20, comma
 btn_sok.grid(row=4, column=2, columnspan=1)
 btn_namn = Button(root, text='Visa namn på alla varor)', padx=30, pady=20, command=namn_func)
 btn_namn.grid(row=5, column=0, columnspan=1)
-btn_helaListan = Button(root, text='Visa hela listan', padx=30, pady=20, command=helaListan_func)
-btn_helaListan.grid(row=5, column=1, columnspan=1)
+btn_hela_listan = Button(root, text='Visa hela listan', padx=30, pady=20, command=hela_listan_func)
+btn_hela_listan.grid(row=5, column=1, columnspan=1)
 btn_uppdatera = Button(root, text='Uppdatera (pris/antal)', padx=30, pady=20, command=uppdatera_func)
 btn_uppdatera.grid(row=5, column=2, columnspan=1)
 btn_ta_bort = Button(root, text='Ta bort  (ange ID)', padx=30, pady=20, command=ta_bort_func)

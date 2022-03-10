@@ -7,26 +7,26 @@ class Shopping: # Skapar klassen shopping.
         self.__pris = pris
         
     #Definerar set- och getmetoder. 
-    def setNamn(self, namn):
+    def set_namn(self, namn):
         self.__namn = namn
     
-    def setAntal(self, antal):
+    def set_antal(self, antal):
         self.__antal = antal
     
-    def setPris(self, pris):
+    def set_pris(self, pris):
         self.__pris = pris
 
-    def getNamn(self):
+    def get_namn(self):
         return self.__namn
     
-    def getAntal(self):
+    def get_antal(self):
         return self.__antal
 
-    def getPris(self):
+    def get_pris(self):
         return self.__pris
 
     def __str__(self):#Definerar str metod för utskrift.
-        utskrift = 'Namn på vara: ' +self.getNamn()+  \
-             '\nAntal: ' +str(self.getAntal())+  \
-                 ' \nPris: ' +str(self.getPris())#Typar om antal och pris till sträng.
+        utskrift = 'Namn på vara: ' +self.get_namn()+  \
+             '\nAntal: ' +str(self.get_antal())+  \
+                 ' \nPris: ' +str(self.get_pris())#Typar om antal och pris till sträng.
         return utskrift
