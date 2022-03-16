@@ -22,6 +22,8 @@ def addera_func():#add funktion
     shopping_dict[id] = vara # varan tilldelas sitt id i dict
     t_area.insert(END,'Du har lagt till varan: \n') #skriver ut
     t_area.insert(END, shopping_dict[id])#skriver ut 
+    antal_lbl = Label(root, text='Det finns '+str(len(shopping_dict))+'varor i shoppinglistan')#textlabel för att visa aktuellt antal i shoppinglistan
+    antal_lbl.grid(row=3,column=2)
 
 #Funktion 2
 def antal_func():#funktion för antal varor
@@ -69,6 +71,8 @@ def ta_bort_func(): #funktion för att ta bort valt id
     id = int(e_id.get()) #variabel för att ta emot valt id. Typar om till int
     del shopping_dict[id] #använder funktionen del för att ta bort valt id från dictionaryn. 
     t_area.insert (END, f'Du tog bort nr: {id}') #skriver ut vilket id som togs bort.
+    antal_lbl = Label(root, text='Det finns '+str(len(shopping_dict))+'varor i shoppinglistan')#textlabel för att visa aktuellt antal i shoppinglistan
+    antal_lbl.grid(row=3,column=2)
    
 #GUI
 root = Tk()
@@ -83,6 +87,8 @@ lbl_pris = Label(root, text = 'Fyll i pris:')
 lbl_pris.grid(row = 2, column = 0)
 lbl_id = Label(root, text = 'Ange ID för att ta bort vara:')
 lbl_id.grid(row = 3, column = 0)
+antal_lbl = Label(root, text='Det finns '+str(len(shopping_dict))+'varor i shoppinglistan')#textlabel för att visa aktuellt antal i shoppinglistan
+antal_lbl.grid(row=3,column=2)
 
 e_namn = Entry(root, width=40, borderwidth=5)#deklarerar/ skapar inputfält. Sätter bredd och ram.
 e_namn.grid(row=0, column=1) #placerar ut inputfält i gui
@@ -95,18 +101,16 @@ e_id.grid(row=3, column=1)
 
 btn_addera = Button(root, text='Lägg till', padx=30, pady=20, command=addera_func) #deklarerar/ skapar upp knapp. Sätter padding och funktion som ska köras
 btn_addera.grid(row=4, column=0, columnspan=1) #placerar ut knappen i gui. 
-btn_antal = Button(root, text='Antal varor', padx=30, pady=20, command=antal_func)
-btn_antal.grid(row=4, column=1, columnspan=1)
 btn_sok = Button(root, text='Visa info (sök på namn)', padx=30, pady=20, command=info_func)
 btn_sok.grid(row=4, column=2, columnspan=1)
-btn_namn = Button(root, text='Visa namn på alla varor)', padx=30, pady=20, command=namn_func)
+btn_namn = Button(root, text='Visa namn på alla varor', padx=30, pady=20, command=namn_func)
 btn_namn.grid(row=5, column=0, columnspan=1)
 btn_hela_listan = Button(root, text='Visa hela listan', padx=30, pady=20, command=hela_listan_func)
 btn_hela_listan.grid(row=5, column=1, columnspan=1)
 btn_uppdatera = Button(root, text='Uppdatera (pris/antal)', padx=30, pady=20, command=uppdatera_func)
 btn_uppdatera.grid(row=5, column=2, columnspan=1)
 btn_ta_bort = Button(root, text='Ta bort  (ange ID)', padx=30, pady=20, command=ta_bort_func)
-btn_ta_bort.grid(row=5, column=3, columnspan=1)
+btn_ta_bort.grid(row=4, column=1, columnspan=1)
 
 t_area = Text(root, height=100, width=100) #deklarerar/ skapar upp text area och bestämmer storlek. 
 t_area.grid(row=6, column=0, columnspan=3) #placerar ut text area i gui. 
